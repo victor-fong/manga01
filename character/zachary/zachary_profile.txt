@@ -1,0 +1,76 @@
+# Zachary Character Profile
+
+## Basic Information
+- **Age:** 10 years old
+- **Ethnicity:** Japanese/Hong Kong descent
+- **Height:** Tall for his age (approximately 140-150cm)
+- **Body Type:** Skinny/lean
+- **Personality:** Shy, kind, sometimes girly/feminine
+
+## Visual Design (Takeshi Obata Style - Death Note manga)
+
+### Face Features
+- **Eyes:** Big, expressive, almond-shaped with thick eyebrows
+- **Eyebrows:** Thick, prominent eyebrows
+- **Nose:** Small, cute, slightly upturned
+- **Mouth:** Small smile, often with a shy, gentle expression
+
+### Hair
+- **Color:** Dark brown/black
+- **Style:** Shorter straight hair that comes down to his eyebrows
+- **Length:** Medium-short, framing the face nicely
+
+### Glasses
+- **Shape:** Rectangle-shaped frames
+- **Material:** Plastic (not metal)
+- **Color:** Blue frames
+- **Style:** Modern, slightly thick frames
+
+### Body
+- **Height:** Tall for his age (looks older than 10)
+- **Build:** Slender, athletic but not muscular
+- **Posture:** Upright but gentle, not stiff
+
+### Clothing Style
+- **Favorite Colors:** Pastel tones - soft pink, baby blue, lavender
+- **Style:** Comfortable clothes with cute patterns
+- **Favorites:** Graphic tees with cute designs, soft sweaters, cute accessories
+
+## Personality Traits in Design
+- **Shyness:** Subtle expressions, gentle smile, eyes looking slightly away
+- **Kindness:** Warm eyes, open posture, gentle smile
+- **Girly/feminine:** Soft color choices, cute accessories, elegant styling
+
+## Manga Panel Ideas
+1. **Intro Panel:** Zachary looking at his reflection, slightly shy but happy
+2. **Action Panel:** Zachary sketching in his notebook, focused and passionate
+3. **Emotional Panel:** Zachary holding a cute stuffed animal, smiling warmly
+4. **Dynamic Panel:** Zachary laughing with friends, big expressive eyes
+
+## Character Design Summary
+Zachary is a 10-year-old Japanese/Hong Kong boy with big expressive eyes and thick eyebrows. He has shorter straight dark brown hair that comes down to his eyebrows. He wears rectangle-shaped glasses with plastic blue frames. His appearance combines a shy, kind personality with a slightly girly/feminine touch through soft pastel colors and cute accessories.
+
+## Prompt for Image Generation
+Use this prompt to generate consistent images of Zachary:
+```
+Manga character portrait of Zachary, 10 years old, Japanese/Hong Kong boy, big expressive eyes with thick eyebrows, shorter straight dark brown hair coming down to his eyebrows, tall for age, skinny build, shy and kind personality. Wearing rectangle-shaped glasses with plastic blue frames. Clean line art style inspired by Takeshi Obata (Death Note), with soft shading and warm color palette. Full head portrait, gentle smiling expression, looking slightly to the side with a quiet confidence. Professional manga illustration with detailed eyes and expressive features.
+```
+
+## Generation Parameters
+- Width: 768 pixels
+- Height: 1024 pixels
+- Steps: 25
+- Negative Prompt: blurry, low quality, distorted, deformed, extra limbs, missing fingers, text, watermark
+
+## Notes
+- Use the prompt above for consistent image generation of Zachary
+- The glasses are rectangle-shaped with plastic blue frames (not round or metal)
+- Hair should be shorter and straight, coming down to his eyebrows
+- Always include thick eyebrows in the prompt
+- Maintain the Takeshi Obata (Death Note) manga art style
+
+## Image Reference
+- **Asset ID:** img_1c228e979cb8
+- **Saved Location:** /opt/data/cache/images/img_08b48c04a0b6.jpg
+- **Original Path:** /home/victor/data/qwen-image-model/mcp-assets/img_1c228e979cb8.png
+- **Qwen Image Service URL:** http://192.168.86.40:30086/assets/img_1c228e979cb8.png

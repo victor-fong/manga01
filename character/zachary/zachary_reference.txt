@@ -1,0 +1,36 @@
+# Zachary Character Reference
+
+## Image Asset ID
+- **Generated Image:** img_1c228e979cb8
+- **Saved Location:** /opt/data/cache/images/img_08b48c04a0b6.jpg
+- **Original Path:** /home/victor/data/qwen-image-model/mcp-assets/img_1c228e979cb8.png
+
+## Image URL
+- **Qwen Image Service:** http://192.168.86.40:30086/assets/img_1c228e979cb8.png
+
+## Character Description
+Zachary is a 10-year-old Japanese/Hong Kong boy with:
+- Big expressive eyes with thick eyebrows
+- Shorter straight dark brown hair coming down to his eyebrows
+- Rectangle-shaped glasses with plastic blue frames
+- Tall for his age (approximately 140-150cm)
+- Skinny/lean build
+- Shy and kind personality
+
+## Prompt for Consistent Generation
+```
+Manga character portrait of Zachary, 10 years old, Japanese/Hong Kong boy, big expressive eyes with thick eyebrows, shorter straight dark brown hair coming down to his eyebrows, tall for age, skinny build, shy and kind personality. Wearing rectangle-shaped glasses with plastic blue frames. Clean line art style inspired by Takeshi Obata (Death Note), with soft shading and warm color palette. Full head portrait, gentle smiling expression, looking slightly to the side with a quiet confidence. Professional manga illustration with detailed eyes and expressive features.
+```
+
+## Generation Parameters
+- Width: 768 pixels
+- Height: 1024 pixels
+- Steps: 25
+- Negative Prompt: blurry, low quality, distorted, deformed, extra limbs, missing fingers, text, watermark
+
+## Notes
+- Use the prompt above for consistent image generation of Zachary
+- The glasses are rectangle-shaped with plastic blue frames (not round or metal)
+- Hair should be shorter and straight, coming down to his eyebrows
+- Always include thick eyebrows in the prompt
+- Maintain the Takeshi Obata (Death Note) manga art style
