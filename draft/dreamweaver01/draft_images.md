@@ -13,16 +13,20 @@
 | File | Asset ID | Description |
 |------|----------|-------------|
 | page02_panel02_draft03.png | img_1507982b0440 | Asher touching light with magical effect |
+| page02_panel02_draft04.png | img_3d10b1b9b6f2 | Asher's close-up with excited expression, wearing red/blue striped pajamas, touching the glowing light |
 
 ## Page 2 - Panel 3
 | File | Asset ID | Description |
 |------|----------|-------------|
 | page02_panel03_draft03.png | img_532fc4a01624 | Zachary's surprised reaction |
+| page02_panel03_draft04.png | img_79a15a4c8c4e | Zachary surprised by the light transforming once Asher touched it |
+| page02_panel03_draft05.png | img_7b2582089fca | Fixed: Asher wears red and blue striped pajamas, Zachary wears pink with stars |
 
 ## Page 2 - Panel 4
 | File | Asset ID | Description |
 |------|----------|-------------|
 | page02_panel04_draft03.png | img_f9daba88f745 | Portal pulling effect |
+| page02_panel04_draft04.png | img_2990eb9098c7 | Fixed: Correct clothes (Asher: red/blue, Zachary: pink with stars), no outer frame, portal pulling effect |
 
 ## Key Points
 - Draft 08 uses the correct input asset ID (img_e441e341bfb4)
