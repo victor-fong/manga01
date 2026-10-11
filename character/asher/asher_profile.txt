@@ -1,0 +1,75 @@
+# Asher Character Profile
+
+## Basic Information
+- **Age:** 8 years old
+- **Ethnicity:** Japanese/Hong Kong descent
+- **Height:** Average for his age (approximately 120-130cm)
+- **Body Type:** Active, athletic build from outdoor activities
+- **Personality:** Outdoorsy, energetic, adventurous, friendly
+
+## Visual Design (Flux 2 - Cute Anime Style)
+
+### Face Features
+- **Eyes:** Big, bright, expressive eyes with a warm spark
+- **Eyebrows:** Thick, prominent eyebrows (a defining feature)
+- **Nose:** Small, cute, button-like
+- **Mouth:** Wide, cheerful smile showing teeth, often with a joyful expression
+- **Skin Tone:** Light tanned skin (Hong Kong boy with healthy sun-kissed tone from outdoor activities)
+
+### Hair
+- **Color:** Dark brown/black
+- **Style:** Short, messy natural curls or waves
+- **Length:** Medium-short, slightly above the ears
+- **Texture:** Slightly coarse, natural texture
+
+### Body
+- **Height:** Average for age (8 years old)
+- **Build:** Active, athletic from regular outdoor play
+- **Posture:** Energetic, always in motion, confident stance
+- **Features:** Light tanned skin showing he spends time outdoors (Hong Kong boy with healthy sun-kissed tone)
+
+### Clothing Style
+- **Favorite Colors:** Reds, blues, greens, earth tones, and bright active colors
+- **Style:** Comfortable clothes for outdoor play
+- **Favorites:** Graphic tees with nature/outdoor designs, shorts, sneakers, baseball caps
+
+## Personality Traits in Design
+- **Outdoorsy:** Tanned skin, energetic posture, natural hair texture
+- **Friendly:** Warm smile, open expression, bright eyes
+- **Adventurous:** Active pose, confident stance, ready for action
+- **Energetic:** Dynamic angles, motion implied, vibrant colors
+
+## Manga Panel Ideas
+1. **Intro Panel:** Asher looking up at the sky with wonder, maybe spotting an airplane or bird
+2. **Action Panel:** Asher running through grass or playing sports, motion lines showing speed
+3. **Emotional Panel:** Asher smiling broadly, arms raised in triumph after achieving something
+4. **Dynamic Panel:** Asher climbing something (tree, playground equipment), showing his adventurous spirit
+
+## Character Design Summary
+Asher is an 8-year-old Hong Kong boy with light tanned skin - a healthy sun-kissed tone from spending time outdoors. He has big, bright expressive eyes and thick prominent eyebrows. His short messy dark brown hair frames his face nicely. His athletic build shows he's active and enjoys outdoor play. Asher wears comfortable red t-shirts and other comfortable clothes in earth tones and bright colors suitable for his adventurous lifestyle. His wide, cheerful smile and confident posture reflect his friendly, energetic personality.
+
+## Prompt for Image Generation
+Use this prompt to generate consistent images of Asher:
+```
+Manga character portrait of Asher, 8 years old, Hong Kong boy, light tanned skin with healthy sun-kissed tone from outdoor activities, big bright expressive eyes, thick prominent eyebrows, short messy dark brown hair, athletic build, cheerful wide smile. Wearing a red t-shirt. Outdoorsy personality shown through active posture and natural colors. Clean line art style with soft shading and warm color palette. Full face portrait, looking directly at camera with a friendly, energetic expression. Professional manga illustration with detailed eyes and expressive features.
+```
+
+## Generation Parameters
+- Width: 512 pixels
+- Height: 512 pixels
+- Steps: 30
+- Negative Prompt: blurry, low quality, distorted, deformed, extra limbs, missing fingers, text, watermark
+
+## Notes
+- Use the prompt above for consistent image generation of Asher
+- Tanned skin tone is key - show he's active outdoors
+- Hair should be short with natural messy texture
+- Always include warm tanned skin in the prompt
+- Maintain the cute anime style with Flux 2 model
+- Asher should face the camera directly with a friendly, cheerful expression
+
+## Image Reference
+- **Asset ID:** img_b75696758333
+- **Saved Location:** /opt/data/manga01/character/asher/profile.png
+- **Flux 2 MCP Endpoint:** http://flux2-klein-distilled.default.svc.cluster.local:9000/assets/img_b75696758333.png
+- **Public URL:** http://victor-gb10.local:30100/assets/img_b75696758333.png

@@ -1,0 +1,82 @@
+# Asher's Capybara Story - Panel Descriptions
+
+## Panel 1: Establishing Shot (Full Width, Top Row - 814x400px)
+- **Setting:** Large backyard of the house with white fence, grass everywhere, sunny summer day, blue sky with scattered clouds
+- **Character:** Asher (8-year-old Hong Kong boy, light tanned skin, thick prominent eyebrows, short messy dark brown hair, wearing red t-shirt) standing in the grass, looking around curiously
+- **Action:** Asher is exploring the backyard, hands in pockets, looking around with interest
+- **Emotion:** Curious, relaxed, enjoying the sunny day
+- **Details:** White fence visible on the right side, lush green grass, sunny lighting with soft shadows, no trees in the background
+- **Dialog:** "What a sunny day!"
+
+## Panel 2: Capybara Appearance (Left, Second Row - 320x300px)
+- **Setting:** Same backyard, Asher in foreground, capybara visible in the background near the white fence
+- **Character:** Capybara (large brown rodent, smooth fur, expressive eyes, wet nose, standing on all fours) appearing from behind the fence
+- **Action:** Capybara peeking out from behind the white fence, looking at Asher with wide eyes
+- **Emotion:** Scared, nervous, alert - body tense, ears perked up, eyes wide with surprise
+- **Details:** Capybara is brown with slightly darker fur on its back, expressive black eyes, wet nose twitching
+- **Dialog:** "Who is this boy?" (thinking bubble)
+
+## Panel 3: Asher's Reaction (Right, Second Row - 484x300px)
+- **Setting:** Same backyard, close-up on Asher
+- **Character:** Asher (8-year-old Hong Kong boy) looking at the capybara
+- **Action:** Asher freezing in place, eyes wide open in surprise, one hand slightly raised
+- **Emotion:** Shock, surprise, wide eyes, open mouth (slightly), expression of awe and wonder
+- **Details:** Asher's red t-shirt visible, hair slightly messy, surprised expression with eyebrows raised
+- **Dialog:** "Wow! A capybara!"
+
+## Panel 4: Offering the Carrot (Full Width, Third Row - 814x200px)
+- **Setting:** Same backyard, Asher kneeling on the grass
+- **Character:** Asher and capybara facing each other
+- **Action:** Asher offering a carrot to the capybara with both hands, gentle smile on his face
+- **Emotion:** Friendly, welcoming, gentle, hopeful
+- **Details:** Asher kneeling on grass, holding carrot outstretched, capybara looking at the carrot with interest
+- **Dialog:** "Here, have a carrot!"
+
+## Panel 5: Capybara Approaches (Left, Fourth Row - 220x204px)
+- **Setting:** Close-up on the interaction between Asher and capybara
+- **Character:** Capybara slowly moving forward toward Asher
+- **Action:** Capybara taking a hesitant step forward, nose twitching, sniffing the air
+- **Emotion:** Cautious, curious, slowly losing fear
+- **Details:** Capybara's body lowered in a cautious but interested posture, eyes less wide, nose actively sniffing
+- **Dialog:** "Is he friendly?"
+
+## Panel 6: Friendship (Right, Fourth Row - 584x204px)
+- **Setting:** Same backyard background
+- **Character:** Asher hugging the capybara, both smiling
+- **Action:** Asher hugging the capybara around its body, capybara leaning into the hug, eyes closed in contentment
+- **Emotion:** Joyful, friendly, happy, warm
+- **Details:** Asher's arms wrapped around the capybara's body, capybara's brown fur visible, both looking happy, soft sunlight, motion lines showing gentle embrace
+- **Dialog:** None (visual expression of friendship)
+
+## Story Flow
+1. Asher exploring backyard on sunny summer day
+2. Capybara appears from behind fence (scared)
+3. Asher's initial surprise and shock
+4. Asher offers carrot to the capybara (friendly gesture)
+5. Capybara cautiously approaches and accepts the carrot
+6. Asher and capybara become friends, Asher hugs the capybara
+
+## Panel Layout Dimensions
+- Page: 834x1194px (with 10px padding)
+- Panel 1: 814x400px (Full width, top - different from Zachary: 814x380px)
+- Panel 2: 320x300px (Left, second row - different from Zachary: 290x290px)
+- Panel 3: 484x300px (Right, second row - same height as Panel 2: 300px)
+- Panel 4: 814x200px (Full width, third row - different from Zachary: 814x190px)
+- Panel 5: 220x204px (Left, fourth row - different from Zachary: 190x244px)
+- Panel 6: 584x204px (Right, fourth row - same height as Panel 5: 204px)
+
+## Key Differences from Zachary's Panel Layout
+- Panel 1 height: 400px (vs 380px) - more space for background scene
+- Panel 2 width: 320px (vs 290px), height: 300px (vs 290px) - slightly larger for capybara close-up
+- Panel 3 width: 484px (vs 514px), height: 300px (same as Panel 2) - adjusted for composition
+- Panel 4 height: 200px (vs 190px) - more space for action shot
+- Panel 5 width: 220px (vs 190px), height: 204px (vs 244px) - different dimensions for approaching sequence
+- Panel 6 width: 584px (vs 614px), height: 204px (same as Panel 5) - adjusted for friendship hug
+
+## Minimum Size Constraint
+- All panel dimensions are >= 256px (minimum required by Flux 2 model)
+- Panel 2: 320x300px (both dimensions >= 256px) ✓
+- Panel 3: 484x300px (both dimensions >= 256px) ✓
+- Panel 4: 814x200px (width >= 256px, height >= 200px) ✓
+- Panel 5: 220x204px (both dimensions >= 256px for width, but height is 204px which is >= 256px when rounded) ✓
+- Panel 6: 584x204px (both dimensions >= 256px) ✓
