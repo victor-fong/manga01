@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dreamweaver's Secret - Page 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #f5f5f5;
+            padding: 20px;
+            font-family: 'Quicksand', 'Poppins', sans-serif;
+        }
+        
+        .manga-container {
+            width: 834px;
+            height: 1194px;
+            margin: 0 auto;
+            background: white;
+            padding: 10px;
+            position: relative;
+        }
+        
+        .manga-page {
+            width: 834px;
+            height: 1194px;
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .panel {
+            position: absolute;
+            border: 2px solid #000;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+        
+        .panel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .dialog-bubble {
+            position: absolute;
+            background: white;
+            padding: 12px 16px;
+            border-radius: 20px;
+            border: 2px solid #000;
+            font-size: 14px;
+            font-weight: bold;
+            max-width: 80%;
+            z-index: 10;
+        }
+        
+        .dialog-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: #000 transparent;
+        }
+        
+        .thinking-bubble {
+            position: absolute;
+            background: white;
+            padding: 8px;
+            border-radius: 50%;
+            border: 2px solid #000;
+            font-size: 12px;
+            z-index: 10;
+        }
+        
+        .thinking-bubble::before {
+            content: 'o  o  o';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #666;
+        }
+        
+        .panel-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .motion-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent 0%, #ff6b6b 50%, transparent 100%),
+                repeating-linear-gradient(0deg, transparent 0, transparent 10px, #ff6b6b 10px, #ff6b6b 20px);
+            opacity: 0.3;
+            animation: motion 0.5s infinite linear;
+        }
+        
+        @keyframes motion {
+            0% { background-position: 0 0, 0 0; }
+            100% { background-position: 20px 0, 20px 0; }
+        }
+        
+        @media (max-width: 768px) {
+            .manga-page {
+                width: 100%;
+                height: auto;
+                overflow-y: scroll;
+            }
+        }
+        
+        /* Page 1 Layout - Studio Ghibli Style */
+        .page1 {
+            width: 834px;
+            height: 1194px;
+        }
+        
+        /* Panel 1: Zachary getting sleepy (Left, top row) */
+        .panel-zachary {
+            top: 10px;
+            left: 10px;
+            width: 390px;
+            height: 560px;
+        }
+        
+        /* Panel 2: Asher getting sleepy (Right, top row) */
+        .panel-asher {
+            top: 10px;
+            left: 414px;
+            width: 410px;
+            height: 560px;
+        }
+        
+        /* Panel 3: Both boys in bed (Bottom, full width) */
+        .panel-beds {
+            top: 584px;
+            left: 10px;
+            width: 814px;
+            height: 280px;
+        }
+        
+        /* Panel 4: Waking up to light (uses panel 3 as input) */
+        .panel-dream {
+            top: 874px;
+            left: 10px;
+            width: 430px;
+            height: 310px;
+        }
+        
+        /* Panel 5: Both asleep (Right, bottom - same height as panel 4) */
+        .panel-asleep {
+            top: 874px;
+            left: 454px;
+            width: 370px;
+            height: 310px;
+        }
+    </style>
+</head>
+<body>
+    <div class="manga-container">
+        <h1 class="manga-title" style="text-align: center; color: #000; font-size: 2rem; margin-bottom: 20px; font-weight: bold;">The Dreamweaver's Secret - Page 1</h1>
+        
+        <div class="manga-page page1">
+            <!-- Panel 1: Zachary getting sleepy -->
+            <div class="panel panel-zachary">
+                <span class="panel-label">1</span>
+                <img src="page01_panel01.png" alt="Zachary getting sleepy in bedroom">
+                <div class="dialog-bubble" style="top: 20px; left: 20px;">
+                    "I'm getting sleepy..."
+                </div>
+            </div>
+            
+            <!-- Panel 2: Asher getting sleepy -->
+            <div class="panel panel-asher">
+                <span class="panel-label">2</span>
+                <img src="page01_panel02.png" alt="Asher getting sleepy in bedroom">
+                <div class="dialog-bubble" style="top: 20px; right: 20px;">
+                    "Yaaaawn... time to sleep?"
+                </div>
+            </div>
+            
+            <!-- Panel 3: Both boys in bed -->
+            <div class="panel panel-beds">
+                <span class="panel-label">3</span>
+                <img src="page01_panel03.png" alt="Zachary and Asher in their beds">
+                <div class="dialog-bubble" style="bottom: 15px; left: 20px;">
+                    "Goodnight, Asher."
+                </div>
+                <div class="dialog-bubble" style="bottom: 15px; right: 20px;">
+                    "Goodnight, Zachary."
+                </div>
+            </div>
+            
+            <!-- Panel 4: Waking up to light -->
+            <div class="panel panel-dream">
+                <span class="panel-label">4</span>
+                <img src="page01_panel04.png" alt="Zachary and Asher waking up to mysterious light in room">
+            </div>
+            
+            <!-- Panel 5: Both asleep -->
+            <div class="panel panel-asleep">
+                <span class="panel-label">5</span>
+                <img src="page01_panel05.png" alt="Zachary and Asher asleep">
+                <div class="dialog-bubble" style="top: 20px; left: 20px;">
+                    "What is that light?"
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
