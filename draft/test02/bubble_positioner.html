@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga Panel Bubble Positioner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #f0f0f0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .header {
+            max-width: 1200px;
+            margin: 0 auto 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .header input, .header textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .header button {
+            background: #1976d2;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        
+        .header button:hover {
+            background: #1565c0;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .editor-panel {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .preview-panel {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .panel-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .panel-card h2 {
+            background: #f5f5f5;
+            padding: 15px 20px;
+            border-bottom: 2px solid #e0e0e0;
+            font-size: 18px;
+            color: #333;
+        }
+        
+        .canvas-container {
+            padding: 20px;
+            min-height: 400px;
+        }
+        
+        .manga-page {
+            position: relative;
+            width: 814px;
+            height: 380px;
+            background: white;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        
+        .panel-content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .panel-content::before {
+            content: 'Drag the thinking bubble here';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #888;
+            font-size: 1.2rem;
+        }
+        
+        .bubble-container {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: grab;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .bubble-container:active {
+            cursor: grabbing;
+        }
+        
+        .bubble-svg {
+            width: auto;
+            height: auto;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .bubble-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            line-height: 1.5;
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        
+        /* Responsive bubble scaling */
+        .manga-bubble-container {
+            position: relative;
+            display: inline-block;
+            max-width: 100%;
+            overflow: visible;
+        }
+        
+        .manga-bubble-container .bubble-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            min-width: 200px;
+            min-height: 120px;
+        }
+        
+        .manga-bubble-container .bubble-text {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* SVG Path for talking bubble with speech tail */
+        /* Bubble scales with text content - use auto dimensions */
+        
+        .flip-toggle {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: #e7f3ff;
+            border: 2px solid #2196f3;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            color: #1565c0;
+        }
+        
+        .flip-toggle:hover {
+            background: #d8e8fc;
+        }
+        
+        .flip-toggle .flip-label {
+            font-size: 12px;
+            color: #64b5f6;
+            margin-left: 5px;
+        }
+        
+        .output-section {
+            padding: 20px;
+            background: #1a1a2e;
+        }
+        
+        .output-section h3 {
+            color: #e94560;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .output-area {
+            width: 100%;
+            height: 300px;
+            background: #0d1117;
+            border: 2px solid #30363d;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #c9d1d9;
+            resize: vertical;
+        }
+        
+        .info-panel {
+            padding: 15px 20px;
+            background: #f5f5f5;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .info-panel h3 {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .info-item {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .info-item strong {
+            display: block;
+            color: #1976d2;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .info-item span {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .info-item code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Manga Panel Bubble Positioner</h1>
+        <p>Drag and position the thinking bubble within the panel. Copy the generated CSS when done.</p>
+        <textarea id="dialog-text" rows="3" placeholder="Enter dialog text (e.g., 'where am I..?')"></textarea>
+        <input type="text" id="css-class" placeholder="Enter CSS class name (e.g., panel-1)" value="panel-1">
+        <button onclick="generateCSS()">Generate CSS</button>
+    </div>
+    
+    <div class="container">
+        <div class="editor-panel">
+            <div class="panel-card">
+                <h2>Editor</h2>
+                <div class="canvas-container">
+                    <div class="manga-page" id="panel-container">
+                        <div class="panel-content">
+                            <div class="bubble-container" id="thinking-bubble" style="position: absolute; top: 120px; left: 650px;">
+                                <div class="manga-bubble-container">
+                                    <svg class="bubble-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org">
+                                        <defs>
+                                            <filter id="bubble-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                                                <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+                                                <feOffset dx="2" dy="2" result="offsetblur"/>
+                                                <feComponentTransfer>
+                                                    <feFuncA type="linear" slope="0.3"/>
+                                                </feComponentTransfer>
+                                                <feMerge>
+                                                    <feMergeNode/>
+                                                    <feMergeNode in="SourceGraphic"/>
+                                                </feMerge>
+                                            </filter>
+                                        </defs>
+                                        <path d="M 20,20 
+                                                 H 260 
+                                                 A 20,20 0 0 1 280,40 
+                                                 V 140 
+                                                 A 20,20 0 0 1 260,160 
+                                                 H 80 
+                                                 L 50,190 
+                                                 L 20,160 
+                                                 H 20 
+                                                 A 20,20 0 0 1 0,140 
+                                                 V 40 
+                                                 A 20,20 0 0 1 20,20 Z" 
+                                              fill="white" 
+                                              stroke="black" 
+                                              stroke-width="3" 
+                                              stroke-linejoin="round"
+                                              filter="url(#bubble-shadow)"/>
+                                    </svg>
+                                    <div class="bubble-text" id="bubble-text" contenteditable="true">where am I..?</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-panel">
+                    <h3>Instructions</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <strong>Drag</strong>
+                            <span>Click and drag the bubble to reposition it</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Resize</strong>
+                            <span>Use the CSS class input to name your panel</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Position</strong>
+                            <span>Position is relative to panel (not page)</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Relative Y</strong>
+                            <span id="relative-y">31.6% of panel</span>
+                        </div>
+                    </div>
+                    <h3>Circle Position</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <strong>Small Circle</strong>
+                            <span>12px diameter (top)</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Medium Circle</strong>
+                            <span>18px diameter (middle)</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Large Circle</strong>
+                            <span>26px diameter (bottom)</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Circle Spacing</strong>
+                            <span>8px vertical gap</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="preview-panel">
+            <div class="panel-card">
+                <h2>Generated CSS</h2>
+                <div class="output-section">
+                    <h3>CSS Output</h3>
+                    <textarea id="css-output" class="output-area" readonly>// Drag and drop the thinking bubble to position it, then click "Generate CSS"</textarea>
+                </div>
+            </div>
+            
+            <div class="panel-card">
+                <h2>Current Position</h2>
+                <div class="info-panel">
+                    <h3>Pixel Position</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <strong>X Position</strong>
+                            <span id="x-position">650px</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Y Position</strong>
+                            <span id="y-position">120px</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Relative X</strong>
+                            <span id="relative-x">79.9% of panel</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Position</strong>
+                            <span>Position is relative to panel (not page)</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Relative Y</strong>
+                            <span id="relative-y">31.6% of panel</span>
+                        </div>
+                    </div>
+                    <h3>Circle Position</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <strong>Small Circle</strong>
+                            <span>12px diameter (top)</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Medium Circle</strong>
+                            <span>18px diameter (middle)</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Large Circle</strong>
+                            <span>26px diameter (bottom)</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Circle Spacing</strong>
+                            <span>8px vertical gap</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Get DOM elements
+        const thinkingBubble = document.getElementById('thinking-bubble');
+        const panelContainer = document.getElementById('panel-container');
+        const cssOutput = document.getElementById('css-output');
+        const xPositionDisplay = document.getElementById('x-position');
+        const yPositionDisplay = document.getElementById('y-position');
+        const relativeXDisplay = document.getElementById('relative-x');
+        const relativeYDisplay = document.getElementById('relative-y');
+        const dialogTextInput = document.getElementById('dialog-text');
+        const bubbleTextElement = document.getElementById('bubble-text');
+        const cssClassInput = document.getElementById('css-class');
+        
+        // Update bubble text from textarea
+        dialogTextInput.addEventListener('input', function() {
+            bubbleTextElement.textContent = this.value || 'where am I..?';
+        });
+        
+        // Update CSS class
+        cssClassInput.addEventListener('input', function() {
+            updateCSS();
+        });
+        
+        // Update position displays
+        function updatePosition() {
+            const left = parseFloat(thinkingBubble.style.left) || 0;
+            const top = parseFloat(thinkingBubble.style.top) || 0;
+            
+            // Update displays
+            xPositionDisplay.textContent = left.toFixed(1) + 'px';
+            yPositionDisplay.textContent = top.toFixed(1) + 'px';
+            
+            // Calculate relative position (percentage of panel)
+            const panelWidth = 814;
+            const panelHeight = 380;
+            const bubbleWidth = 150;
+            const bubbleHeight = 150;
+            
+            const relativeLeft = ((left + bubbleWidth / 2) / panelWidth) * 100;
+            const relativeTop = ((top + bubbleHeight / 2) / panelHeight) * 100;
+            
+            relativeXDisplay.textContent = relativeLeft.toFixed(1) + '% of panel';
+            relativeYDisplay.textContent = relativeTop.toFixed(1) + '% of panel';
+        }
+        
+        // Generate CSS
+        function generateCSS() {
+            const left = parseFloat(thinkingBubble.style.left) || 0;
+            const top = parseFloat(thinkingBubble.style.top) || 0;
+            const panelWidth = 814;
+            const panelHeight = 380;
+            const bubbleWidth = 150;
+            
+            const relativeLeft = ((left + 75) / panelWidth) * 100;
+            const relativeTop = ((top + 75) / panelHeight) * 100;
+            
+            const cssClass = cssClassInput.value.trim() || 'panel-1';
+            
+            // Calculate position - centered in panel
+            const bubbleCenter = left + bubbleWidth / 2;
+            
+            const css = `/* ${cssClass} - Manga Talking Bubble Position */\n` +
+                        `.manga-bubble-container {\n` +
+                        `    position: absolute;\n` +
+                        `    left: ${left}px;\n` +
+                        `    top: ${top}px;\n` +
+                        `    /* Relative: ${relativeLeft.toFixed(1)}% horizontal, ${relativeTop.toFixed(1)}% vertical */\n` +
+                        `}\n` +
+                        `\n` +
+                        `.bubble-svg {\n` +
+                        `    width: auto;\n` +
+                        `    height: auto;\n` +
+                        `    position: absolute;\n` +
+                        `    bottom: 0;\n` +
+                        `    left: 0;\n` +
+                        `    width: 100%;\n` +
+                        `    height: 100%;\n` +
+                        `    z-index: 0;\n` +
+                        `}\n` +
+                        `\n` +
+                        `.bubble-text {\n` +
+                        `    font-size: 20px;\n` +
+                        `    font-weight: bold;\n` +
+                        `    color: #333;\n` +
+                        `    line-height: 1.5;\n` +
+                        `    position: relative;\n` +
+                        `    z-index: 2;\n` +
+                        `    padding: 20px;\n` +
+                        `    max-width: 80%;\n` +
+                        `    word-wrap: break-word;\n` +
+                        `}\n` +
+                        `\n` +
+                        `/* Responsive bubble scaling */\n` +
+                        `.manga-bubble-container {\n` +
+                        `    position: relative;\n` +
+                        `    display: inline-block;\n` +
+                        `    max-width: 100%;\n` +
+                        `    overflow: visible;\n` +
+                        `}\n` +
+                        `\n` +
+                        `.manga-bubble-container .bubble-svg {\n` +
+                        `    position: absolute;\n` +
+                        `    top: 0;\n` +
+                        `    left: 0;\n` +
+                        `    width: 100%;\n` +
+                        `    height: 100%;\n` +
+                        `    min-width: 200px;\n` +
+                        `    min-height: 120px;\n` +
+                        `}\n` +
+                        `\n` +
+                        `/* SVG Path for talking bubble with speech tail */\n` +
+                        `/* Bubble scales with text content - use auto dimensions */`;
+        function updateCSS() {
+            const left = parseFloat(thinkingBubble.style.left) || 0;
+            const top = parseFloat(thinkingBubble.style.top) || 0;
+            const panelWidth = 814;
+            const panelHeight = 380;
+            const bubbleWidth = 150;
+            
+            const relativeLeft = ((left + 75) / panelWidth) * 100;
+            const relativeTop = ((top + 75) / panelHeight) * 100;
+            
+            const cssClass = cssClassInput.value.trim() || 'panel-1';
+            
+            // Calculate position - centered in panel
+            const bubbleCenter = left + bubbleWidth / 2;
+            
+            const css = `/* ${cssClass} - Manga Talking Bubble Position */\n` +
+                        `.manga-bubble-container {\n` +
+                        `    position: absolute;\n` +
+                        `    left: ${left.toFixed(1)}px;\n` +
+                        `    top: ${top.toFixed(1)}px;\n` +
+                        `    /* Relative: ${relativeLeft.toFixed(1)}% horizontal, ${relativeTop.toFixed(1)}% vertical */\n` +
+                        `}\n` +
+                        `\n` +
+                        `.bubble-svg {\n` +
+                        `    width: 100%;\n` +
+                        `    height: 100px;\n` +
+                        `    position: absolute;\n` +
+                        `    bottom: -15px;\n` +
+                        `    left: 50%;\n` +
+                        `    transform: translateX(-50%);\n` +
+                        `    z-index: 0;\n` +
+                        `}\n` +
+                        `\n` +
+                        `.bubble-text {\n` +
+                        `    font-size: 20px;\n` +
+                        `    font-weight: bold;\n` +
+                        `    color: #333;\n` +
+                        `    line-height: 1.5;\n` +
+                        `    position: relative;\n` +
+                        `    z-index: 2;\n` +
+                        `}\n` +
+                        `\n` +
+                        `/* SVG Path for talking bubble with speech tail */\n` +
+                        `/* Main oval bubble: 150px wide, 100px tall */\n` +
+                        `/* Tail: Positioned at bottom center, pointing down */`;
+            
+            cssOutput.value = css;
+        }
+        
+        // Initialize
+        console.log('Manga Panel Bubble Positioner loaded!');
+        console.log('Drag the bubble to position it, then click "Generate CSS" to export.');
+        
+        // Make the bubble draggable
+        let isDragging = false;
+        let startX, startY, initialLeft, initialTop;
+        
+        thinkingBubble.addEventListener('mousedown', function(e) {
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            initialLeft = parseFloat(thinkingBubble.style.left) || 0;
+            initialTop = parseFloat(thinkingBubble.style.top) || 0;
+            thinkingBubble.style.cursor = 'grabbing';
+        });
+        
+        document.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+            
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+            
+            thinkingBubble.style.left = (initialLeft + dx) + 'px';
+            thinkingBubble.style.top = (initialTop + dy) + 'px';
+            
+            updatePosition();
+            updateCSS();
+        });
+        
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+            thinkingBubble.style.cursor = 'grab';
+            updateCSS();
+        });
+        
+        // Initialize position
+        updatePosition();
+        updateCSS();
+    </script>
+</body>
+</html>

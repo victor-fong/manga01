@@ -1,0 +1,36 @@
+{
+  "flux2_model": "flux2-klein-distilled",
+  "test_date": "2026-10-10",
+  "tests": [
+    {
+      "name": "generate_image",
+      "status": "success",
+      "asset_id": "img_c2582b2ce52e",
+      "prompt": "Manga character portrait of Zachary, 10 years old, Japanese/Hong Kong boy, scared expression, thick eyebrows, blue-framed glasses, close-up shot, soft lighting, professional manga illustration with detailed eyes and expressive features. Takeshi Obata style (Death Note manga).",
+      "dimensions": "544x768",
+      "steps": 4
+    },
+    {
+      "name": "edit_image",
+      "status": "success",
+      "asset_id": "img_2a81638dc144",
+      "prompt": "Change the background to a busy city street with skyscrapers, bright daylight, Zachary looking scared and confused. Maintain Zachary's facial features, blue-framed glasses, and scared expression from the original image.",
+      "dimensions": "864x1216",
+      "steps": 4,
+      "input_asset": "img_c2582b2ce52e"
+    }
+  ],
+  "workflow_notes": [
+    "flux2-klein-distilled model is accessible at http://flux2-klein-distilled.default.svc.cluster.local:9000/mcp",
+    "Session ID must be obtained from 'Mcp-Session-Id' header after initialization",
+    "generate_image tool requires prompt, width, height, and num_inference_steps",
+    "edit_image tool requires prompt, images array, and strength parameter",
+    "Key rule: Use 'images' array (not 'image' scalar) for edit_image inputs"
+  ],
+  "zachary_character_ref": {
+    "prompt_template": "Manga character portrait of Zachary, 10 years old, Japanese/Hong Kong boy, big expressive eyes with thick eyebrows, shorter straight dark brown hair coming down to his eyebrows, tall for age, skinny build, shy and kind personality. Wearing rectangle-shaped glasses with plastic blue frames. Clean line art style inspired by Takeshi Obata (Death Note), with soft shading and warm color palette. Full head portrait, gentle smiling expression, looking slightly to the side with a quiet confidence. Professional manga illustration with detailed eyes and expressive features.",
+    "dimensions": "768x1024",
+    "steps": 25,
+    "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing fingers, text, watermark"
+  }
+}
